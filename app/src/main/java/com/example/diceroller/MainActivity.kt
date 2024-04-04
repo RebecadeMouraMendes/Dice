@@ -71,6 +71,21 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text(text = stringResource(R.string.roll), fontSize = 24.sp)
             }
+          var input by remember { mutableStateOf("") }
+            OutlinedTextField(
+                value = input,
+                onValueChange = { input = it },
+                label = { Text("Insira um número") }
+            )
+            val str = result.toString()
+            if(str == input){
+                val toast = Toast.makeText(getApplicationContext(), "Ganhou :)", Toast.LENGTH_SHORT);
+                toast.show()
+            }
+            else{
+                val toast = Toast.makeText(getApplicationContext(), "Perdeu :(", Toast.LENGTH_SHORT);
+                toast.show()
+            }
         }
     }
 }
